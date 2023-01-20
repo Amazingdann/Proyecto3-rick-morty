@@ -21,6 +21,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.125);
 
   }
+
+  .ttlo{
+    color: rgb(0, 0, 0);
+  }
   
   
   .site-header a {
@@ -43,6 +47,15 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
   
+.chartcard{
+    backdrop-filter: blur(0px) saturate(177%);
+    -webkit-backdrop-filter: blur(0px) saturate(177%);
+    background-color: rgba(17, 25, 40, 0.89);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    color: white;
+      }
+
   .card{
     backdrop-filter: blur(5px) saturate(88%);
     -webkit-backdrop-filter: blur(5px) saturate(88%);
