@@ -11,7 +11,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const loader=document.getElementById("loader");
 const rowContainer=document.getElementById("rowContainer");
 const urlpages = "https://rickandmortyapi.com/api/character?page="
-
+//const generateRandomNumber = require('./assets/JS/randomNumber.js');
 
 
 function generateRandomNumber (min=1, max= 826){
@@ -44,7 +44,8 @@ function generateRandomNumber (min=1, max= 826){
 
 
 
-function cargarPersonajes () {
+function cargarPersonajes () { 
+
     fetch(url, 
     {
         method:"GET"
@@ -123,8 +124,12 @@ function cargarPersonajes () {
 };
 
 
+async function init (ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(()=> {
+        reject(cargarPersonajes())
+    }, 4000);
+});
+  }
 
-cargarPersonajes();
-
-
-
+  init()
