@@ -8,6 +8,9 @@ const especiePersonaje= document.getElementById("especie")
 const generoPersonaje= document.getElementById("genero")
 const origenPersonaje= document.getElementById("planeta")
 const ctx = document.getElementById('myChart').getContext('2d');
+const loader=document.getElementById("loader");
+const rowContainer=document.getElementById("rowContainer");
+const urlpages = "https://rickandmortyapi.com/api/character?page="
 
 
 
@@ -59,20 +62,35 @@ function cargarPersonajes () {
         <td>${personaje.gender}</td>
         </tr>`;
         tblPersonaje.innerHTML+=tr;
-    }
     
-    const labels_for_chart = result.results.map(item =>item.gender)
-    console.log(labels_for_chart)
+    }
+    loader.classList.add("d-none")
+    rowContainer.classList.remove("d-none")
+
+
+
+    const labels_for_chart = result.results.map(item =>item.gender);
+    console.log(labels_for_chart);
+    const male = result.results.filter(item=>item.gender === 'Male');
+  
+    console.log(male);
+    const female = result.results.filter(item=>item.gender === 'Female');
+    console.log(female);
+    const unknown = result.results.filter(item=>item.gender === 'unknown');
+    console.log(unknown);
+    const genderless = result.results.filter(item=>item.gender === 'Genderless');
+    console.log(genderless);
+
     const data_for_chart = result.results.map(item =>item.gender)
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Male", "Female", "Unknown"],
+            labels: ['Male','Female','Unknown','Genderless'],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Gender',
+                data: [male.length,female.length, unknown.length,genderless.length],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
@@ -87,7 +105,7 @@ function cargarPersonajes () {
                     'rgba(153, 102, 255, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 4
             }]
         },
         options: {
@@ -103,6 +121,8 @@ function cargarPersonajes () {
     })
   .catch((error) => console.log("error detectado"));
 };
+
+
 
 cargarPersonajes();
 
