@@ -1,4 +1,5 @@
 console.log("Entro al main.js");
+
 const imgPersonaje= document.getElementById("imgPersonaje");
 const url = "https://rickandmortyapi.com/api/character/"
 const tblPersonaje=document.getElementById("tblPersonaje");
@@ -11,18 +12,17 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const loader=document.getElementById("loader");
 const rowContainer=document.getElementById("rowContainer");
 
-//const generateRandomNumber = require('./assets/JS/randomNumber.js');
-
 
 function generateRandomNumber (min=1, max= 826){
-    let difference = max - min;
-  
-    let rand = Math.random();
-  
-    rand = Math.floor(rand* difference);
-    rand= rand+min
-    return rand;
-  }
+  let difference = max - min;
+
+  let rand = Math.random();
+
+  rand = Math.floor(rand* difference);
+  rand= rand+min
+  return rand;
+  console.log(rand);
+}
 
   function randomCharacter () {
     console.log("función randomCharacter");
